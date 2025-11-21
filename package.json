@@ -1,12 +1,15 @@
 {
-  "name": "m3-flashcardsapp",
+  "homepage": "https://fecef.github.io/senac-pti-front/",
+  "name": "senac-pi",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -16,6 +19,7 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.1.3",
     "eslint": "^8.26.0",
+    "gh-pages": "^6.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.38.0",
