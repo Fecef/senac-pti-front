@@ -115,18 +115,6 @@ export default function CustomerDetail() {
           />
         </FormControl>
 
-        {customer.compras.map((compra, index) => (
-          <FormControl key={index}>
-            <TextField
-              id="outlined-basic"
-              label="Última Compra"
-              variant="outlined"
-              value={compra.produto}
-              onChange={handleChange("compras")}
-            />
-          </FormControl>
-        ))}
-
         <Button variant="contained" onClick={handleSubmit}>
           Salvar alterações
         </Button>
