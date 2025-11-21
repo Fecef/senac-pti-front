@@ -1,6 +1,4 @@
-import { iUser } from "./../contexts/UserContext";
 import { toast } from "react-toastify";
-import { iLoginInput } from "../components/Form/FormLogin";
 import { api } from "./api";
 
 export const userLogin = async (
