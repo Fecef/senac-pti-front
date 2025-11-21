@@ -5,7 +5,7 @@ import CustomerDetail from "../pages/customerDetail";
 export function RoutesMain() {
   return (
     <Routes>
-      <Route index path="/" element={<Dashboard />} />
+      <Route index path="/senac-pti-front/" element={<Dashboard />} />
       <Route index path="/customer/:cpf" element={<CustomerDetail />} />
     </Routes>
   );
