@@ -27,7 +27,7 @@ export const updateCustomerAPI = async (cpf: string, cliente: { cpf?: string; te
   const { data } = await api.patch(`/clientes/${cpf}`, cliente);
   return data;
 };
-export const postCustomerAPI = async (payload: { nome: string; telefone: string; email?: string }) => {
+export const postCustomerAPI = async (payload: { cpf: string; telefone: string; }) => {
   const { data } = await api.post("/clientes/", payload);
   return data;
 };

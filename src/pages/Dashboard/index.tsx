@@ -65,10 +65,10 @@ export default function Dashboard() {
           {error}
         </Alert>
         <Stack direction="row" gap={2} sx={{ mt: 2 }}>
-          <Button variant="contained" sx={{ bgcolor: "#1a568f" }} onClick={() => navigate("/cadastrar-cliente")}>
+          <Button variant="contained" sx={{ bgcolor: "#1a568f" }} onClick={() => navigate("/customer")}>
             Cadastrar Cliente
           </Button>
-          <Button variant="contained" sx={{ bgcolor: "#1a568f" }} onClick={() => navigate("/cadastrar-produto")}>
+          <Button variant="contained" sx={{ bgcolor: "#1a568f" }} onClick={() => navigate("/product")}>
             Cadastrar Produto
           </Button>
           <Button variant="outlined" onClick={() => fetchData()}>Tentar novamente</Button>
@@ -87,7 +87,7 @@ export default function Dashboard() {
         <Button
           variant="contained"
           sx={{ bgcolor: "#1a568f" }}
-          onClick={() => navigate("/cadastrar-cliente")}
+          onClick={() => navigate("/customer")}
         >
           Cadastrar Cliente
         </Button>
@@ -95,7 +95,7 @@ export default function Dashboard() {
         <Button
           variant="contained"
           sx={{ bgcolor: "#1a568f" }}
-          onClick={() => navigate("/cadastrar-produto")}
+          onClick={() => navigate("/product")}
         >
           Cadastrar Produto
         </Button>

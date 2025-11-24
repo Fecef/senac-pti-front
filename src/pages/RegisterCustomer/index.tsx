@@ -7,10 +7,8 @@ export default function RegisterCustomer() {
   const navigate = useNavigate();
 
   const [cpf, setCpf] = useState("");
-  const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
-  const [email, setEmail] = useState("");
-
+  
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -19,21 +17,15 @@ export default function RegisterCustomer() {
     if (!cpf.trim()) return "CPF é obrigatório.";
     if (!/^\d{11}$/.test(cpf)) return "CPF deve ter 11 dígitos.";
 
-    if (!nome.trim()) return "Nome é obrigatório.";
-
     if (!telefone.trim()) return "Telefone é obrigatório.";
     if (!/^\d{8,13}$/.test(telefone)) return "Telefone precisa ter entre 8 e 13 dígitos.";
-
-    if (email && !/^\S+@\S+\.\S+$/.test(email)) return "E-mail inválido.";
 
     return null;
   };
 
   const clearForm = () => {
     setCpf("");
-    setNome("");
     setTelefone("");
-    setEmail("");
     setError(null);
     setSuccess(null);
   };
@@ -53,9 +45,7 @@ export default function RegisterCustomer() {
     try {
       const payload = {
         cpf,
-        nome,
         telefone,
-        email: email || undefined,
       };
 
       await postCustomerAPI(payload);
@@ -93,23 +83,10 @@ export default function RegisterCustomer() {
         />
 
         <TextField
-          label="Nome completo"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          required
-        />
-
-        <TextField
           label="Telefone (somente números)"
           value={telefone}
           onChange={(e) => setTelefone(e.target.value.replace(/\D/g, ""))}
           required
-        />
-
-        <TextField
-          label="E-mail (opcional)"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
         />
 
         <Stack direction="row" gap={2} justifyContent="flex-end" sx={{ mt: 2 }}>
