@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import CustomerDetail from "../pages/customerDetail";
 import RegisterCustomer from "../pages/RegisterCustomer";
 import RegisterProduct from "../pages/RegisterProduct";
-import Dashboard from "../pages/dashboard";
+import Dashboard from "../pages/Dashboard";
 
 export function RoutesMain() {
   return (
