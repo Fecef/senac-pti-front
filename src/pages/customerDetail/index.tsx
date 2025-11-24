@@ -5,18 +5,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import {
-  Button,
-  FormControl,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
-import {
-  getCustomerDetailsAPI,
-  removeCustomerAPI,
-  updateCustomerAPI,
-} from "../../services/customer";
+import {Button, FormControl, Stack, TextField, Typography,} from "@mui/material";
+import { getCustomerDetailsAPI, removeCustomerAPI, updateCustomerAPI,} from "../../services/customer";
 import { useEffect, useState } from "react";
 
 import { useNavigate, useParams } from "react-router-dom";

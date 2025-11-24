@@ -45,7 +45,7 @@ const fetchData = async () => {
   const handleClickOpenCliente = () => setOpenCliente(true);
   const handleCloseCliente = () => setOpenCliente(false);
   
-  const handleSubmit = async () => {
+  const handleSubmitCliente = async () => {
   try {
     await axios.post("http://localhost:8000/clientes/", {nome,cpf,telefone});
     alert("Cliente cadastrado com sucesso!");
