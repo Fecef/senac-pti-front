@@ -15,7 +15,7 @@ export const Header = () => {
           objectFit: "contain",
           p: 1,
         }}
-        onClick={() => navigate("/senac-pti-front")}
+        onClick={() => navigate("/")}
       />
     </Stack>
   );
