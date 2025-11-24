@@ -74,10 +74,20 @@ export default function CustomerDetail() {
     };
 
   const removeCustomer = async (cpf: string) => {
-    await removeCustomerAPI(cpf);
-    toast.success("Cliente removido com sucesso");
-    navigate(`/customer/`);
-  };
+  if (!cpf) return;
+  if (!confirm("Tem certeza que deseja excluir este cliente?")) return;
+
+  try {
+        await removeCustomerAPI(cpf);
+
+        toast.success("Cliente removido com sucesso");
+
+        navigate("/", { replace: true });
+  } catch (err: any) {
+    console.error("Erro ao remover cliente:", err);
+    toast.error(err?.message || "Erro ao remover cliente.");
+  }
+};
 
   return (
     <Stack
