@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { getCustomerListAPI } from "../../services/customer";
+import { postProductAPI } from "../../services/product";
 
 interface CustomerOption {
   cpf: string;
@@ -68,10 +69,11 @@ export default function RegisterProduct() {
     setLoading(true);
     try {
       const payload = {
-        cpf: selectedCpf,
+        cliente_cpf: selectedCpf!,
         produtos: produtos,
       };
       console.info(payload)
+      await postProductAPI(payload);
       setSuccess("Compra registrada com sucesso.");
       setProdutos([""]);
     } catch (err:any) {
