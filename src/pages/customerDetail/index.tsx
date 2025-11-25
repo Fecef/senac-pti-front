@@ -6,6 +6,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import {
+  Box,
   Button,
   FormControl,
   Stack,
@@ -18,9 +19,9 @@ import {
   updateCustomerAPI,
 } from "../../services/customer";
 import { useEffect, useState } from "react";
-
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { sendMessageAPI } from "../../services/messenger";
 
 interface Historico {
   comprado_em: string;
@@ -65,7 +66,13 @@ export default function CustomerDetail() {
     const payload = { cpf: customer.cpf, telefone: customer.telefone };
     await updateCustomerAPI(cpf, payload);
     toast.success("Cliente alterado com sucesso");
-    navigate(`/customer/${customer.cpf}`); 
+    navigate(`/customer/${customer.cpf}`);
+  };
+
+  const handleMessageSubmit = async () => {
+    if (!customer.telefone) return;
+    await sendMessageAPI(customer.telefone, "Ola! Temos uma promoção especial para você!");
+    toast.success("Mensagem enviada");
   };
 
   const handleChange =
@@ -74,20 +81,20 @@ export default function CustomerDetail() {
     };
 
   const removeCustomer = async (cpf: string) => {
-  if (!cpf) return;
-  if (!confirm("Tem certeza que deseja excluir este cliente?")) return;
+    if (!cpf) return;
+    if (!confirm("Tem certeza que deseja excluir este cliente?")) return;
 
-  try {
-        await removeCustomerAPI(cpf);
+    try {
+      await removeCustomerAPI(cpf);
 
-        toast.success("Cliente removido com sucesso");
+      toast.success("Cliente removido com sucesso");
 
-        navigate("/", { replace: true });
-  } catch (err: any) {
-    console.error("Erro ao remover cliente:", err);
-    toast.error(err?.message || "Erro ao remover cliente.");
-  }
-};
+      navigate("/", { replace: true });
+    } catch (err: any) {
+      console.error("Erro ao remover cliente:", err);
+      toast.error(err?.message || "Erro ao remover cliente.");
+    }
+  };
 
   return (
     <Stack
@@ -124,9 +131,20 @@ export default function CustomerDetail() {
             onChange={handleChange("telefone")}
           />
         </FormControl>
-
+        
         <Button variant="contained" onClick={handleSubmit}>
           Salvar alterações
+        </Button>
+
+        <Button variant="contained" onClick={handleMessageSubmit}>
+          Enviar WhatsApp
+          <Box
+            component="img"
+            src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-1.png"
+            alt="Logo WhatsApp"
+            height="20px"
+            sx={{ ml: 1 }}
+          ></Box>
         </Button>
 
         <Button

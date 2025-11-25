@@ -5,3 +5,11 @@ export const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+export const whatsappAPI = axios.create({
+  baseURL: "https://gate.whapi.cloud",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer 1CWT1lUYDIIjAhJO3mQSV6l9QjNDbNSM"
+  },
+});
